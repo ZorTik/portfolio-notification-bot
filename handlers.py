@@ -42,8 +42,7 @@ async def handle_messages_created(notifications_user: discord.User, notification
             description="There are new messages in chats you are part of",
         )
         for notify_message in notify_messages:
-            embed.add_field(name=notify_message["user_id"], value=notify_message["content"], inline=False)
-            """ TODO: Change name to username, not user_id """
+            embed.add_field(name=f"{notify_message['username']} said:", value=notify_message["content"], inline=False)
 
         await notifications_user.send(embed=embed)
     else:
